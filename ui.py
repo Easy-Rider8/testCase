@@ -19,7 +19,7 @@ def test_ui_01_gecerli_kullanici_ile_giris(login_page):
     login_page.get_by_role("textbox", name="Şifreniz").fill(VALID_PASSWORD)  # Şifre alanına gir
     login_page.click("button:has-text('Giriş Yap')")  # Giriş butonuna tıkla
 
-    expect(login_page).to_have_url(BASE_URL + "dashboard")  # Kullanıcının yönlendirilmesini doğrula
+    expect(login_page).to_have_url(BASE_URL + "home")  # Kullanıcının yönlendirilmesini doğrula
 
 def test_ui_02_gecersiz_kullanici_ile_giris(login_page):
     """Yanlış kimlik bilgileriyle giriş yapıldığında hata mesajını doğrula"""
@@ -47,5 +47,5 @@ def test_ui_04_basarili_giris_sonrasi_yonlendirme(login_page):
     login_page.get_by_role("textbox", name="Şifreniz").fill(VALID_PASSWORD)
     login_page.click("button:has-text('Giriş Yap')")
 
-    login_page.wait_for_url(BASE_URL + "dashboard")  # Yönlendirme tamamlanana kadar bekle
-    assert login_page.url == BASE_URL + "dashboard"
+    login_page.wait_for_url(BASE_URL + "home")  # Yönlendirme tamamlanana kadar bekle
+    assert login_page.url == BASE_URL + "home"
